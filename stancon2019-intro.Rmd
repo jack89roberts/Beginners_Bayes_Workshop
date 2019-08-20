@@ -506,6 +506,26 @@ fit_multi <- sampling(comp_multi, data = standata_simple,
 print(fit_multi, pars = c("alpha", "beta", "beta_super"))
 ```
 
+```{r compare-prior-posterior-multi}
+draws_multi <- as.matrix(fit_multi, pars = c('alpha','beta', 'beta_super'))
+
+alpha_prior_post <- cbind(alpha_prior = rnorm(4000, log(7), 1), 
+                          alpha_posterior = draws_multi[, "alpha"])
+mcmc_hist(alpha_prior_post, facet_args = list(nrow = 2), binwidth = 0.1) + 
+  xlim(range(alpha_prior_post))
+
+
+beta_prior_post <- cbind(beta_prior = rnorm(4000, -0.25, 0.5), 
+                         beta_posterior = draws_multi[, "beta"])
+mcmc_hist(beta_prior_post, facet_args = list(nrow = 2), binwidth = 0.05) + 
+  xlim(range(beta_prior_post))
+
+beta_super_prior_post <- cbind(beta_super_prior = rnorm(4000, -0.25, 0.5), 
+                         beta_super_posterior = draws_multi[, "beta_super"])
+mcmc_hist(beta_super_prior_post, facet_args = list(nrow = 2), binwidth = 0.05) + 
+  xlim(range(beta_super_prior_post))
+
+```
 
 ```{r ppc_dens_overlay-random-subset}
 y_rep <- as.matrix(fit_multi, pars = "y_rep")
