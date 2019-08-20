@@ -479,6 +479,7 @@ $$
 \beta_{\rm super} \textrm{live_in_super}_{b,t} +
 \textrm{log_sq_foot}_b
 $$
+
  
 Add these new variables to the data list for Stan.
 
@@ -567,6 +568,7 @@ $$
 \end{align*}
 $$
 
+
 In Stan the negative binomial mass function we'll use is called 
 $\texttt{neg_binomial_2_log}(\text{ints} \, y, \text{reals} \, \eta, \text{reals} \, \phi)$ 
 in Stan. Like the `poisson_log` function, this negative binomial mass function
@@ -577,10 +579,10 @@ $$
 \mathbb{E}[y] \, = \lambda = \exp(\eta)
 $$
 
+
 $$
 \text{Var}[y] = \lambda + \lambda^2/\phi = \exp(\eta) + \exp(\eta)^2 / \phi.
-$$ 
-
+$$
 As $\phi$ gets larger the term $\lambda^2 / \phi$ approaches zero and so 
 the variance of the negative-binomial approaches $\lambda$, i.e., the
 negative-binomial gets closer and closer to the Poisson.
