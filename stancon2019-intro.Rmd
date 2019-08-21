@@ -879,7 +879,7 @@ parcoord_with_divs <- mcmc_parcoord(
 parcoord_with_divs
 ```
 
-Again, we see evidence that our problems concentrate when $\texttt{sigma_mu}$ is small.
+Again, we see evidence that our problems concentrate when $\texttt{sigma_mu}$ is small
 
 ### Reparameterize and recheck diagnostics
 
